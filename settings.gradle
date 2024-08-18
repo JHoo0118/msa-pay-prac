@@ -1,0 +1,5 @@
+rootProject.name = 'msa-pay'
+
+include "membership-service"
+//include ":common"
+include "banking-service"
