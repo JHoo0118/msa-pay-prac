@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -15,26 +14,22 @@ import jakarta.validation.constraints.NotNull;
 public class RegisterBankAccountCommand extends SelfValidating<RegisterBankAccountCommand> {
 
     @NotNull
-    private final String name;
+    private final String membershipId;
 
     @NotNull
-    private final String email;
+    private final String bankName;
 
     @NotNull
     @NotBlank
-    private final String address;
+    private final String bankAccountNumber;
 
-    @AssertTrue
     private final boolean isValid;
 
-    private final boolean isCorp;
-
-    public RegisterBankAccountCommand(String name, String email, String address, boolean isValid, boolean isCorp) {
-        this.name = name;
-        this.email = email;
-        this.address = address;
+    public RegisterBankAccountCommand(String membershipId, String bankName, String bankAccountNumber, boolean isValid) {
+        this.membershipId = membershipId;
+        this.bankName = bankName;
+        this.bankAccountNumber = bankAccountNumber;
         this.isValid = isValid;
-        this.isCorp = isCorp;
 
         this.validateSelf();
     }

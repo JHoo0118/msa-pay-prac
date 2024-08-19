@@ -17,14 +17,12 @@ public class RegisterBankAccountController {
 
     private final RegisterBankAccountUseCase registerBankAccountUseCase;
     @PostMapping(path = "/banking/register/account")
-    RegisteredBankAccount registerBankAccount(@RequestBody RegisterBankAccountRequest request) {
-
+    RegisteredBankAccount registerMembership(@RequestBody RegisterBankAccountRequest request) {
         RegisterBankAccountCommand command = RegisterBankAccountCommand.builder()
-                .name(request.getName())
-                .address(request.getAddress())
-                .email(request.getEmail())
-                .isValid(true)
-                .isCorp(request.isCorp())
+                .membershipId(request.getMembershipId())
+                .bankName(request.getBankName())
+                .bankAccountNumber(request.getBankAccountNumber())
+                .isValid(request.isValid())
                 .build();
 
         return registerBankAccountUseCase.registerBankAccount(command);
